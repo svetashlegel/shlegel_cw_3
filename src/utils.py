@@ -1,5 +1,7 @@
 import json
 
+from src import module
+
 
 def load_operations(path):
     """Загружает список операций из файла"""
@@ -18,3 +20,12 @@ def get_last_5_operations(data):
             break
     return last_operations_list
 
+
+def get_right_format(raw_list):
+    """Создает список экземпляров класса Operations"""
+    right_format_list = []
+    for op in raw_list:
+        operation = module.Operations(op["date"], op["description"], op["from"], op["to"],
+                                      op["operationAmount"]["amount"], op["operationAmount"]["currency"]["name"])
+        right_format_list.append(operation)
+    return right_format_list

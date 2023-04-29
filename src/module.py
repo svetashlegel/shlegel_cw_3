@@ -33,7 +33,3 @@ class Operations:
         return f"{date_formated.day}.{date_formated.month}.{date_formated.year} {self.description}\n" \
                f"{formated_from} -> {formated_to}\n" \
                f"{self.operation_sum} {self.currency}"
-
-a = Operations("2019-08-26T10:50:58.294041", "Перевод организации", "Maestro 1596837868705199",
-                                   "Счет 64686473678894779589", "8221.37", "USD")
-print(a.__repr__())

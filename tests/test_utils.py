@@ -33,3 +33,10 @@ def test_get_last_5_operations(op_data):
     {
         "id": 441945886,
         "state": "EXECUTED"}]
+
+
+def test_get_right_format(ex_operation):
+    format_data = utils.get_right_format(ex_operation)
+    assert str(format_data) == "[Operations (date=2019-08-26T10:50:58.294041, description=Перевод организации, " \
+                               "operation_from=Maestro 1596837868705199, operation_to=Счет 64686473678894779589, " \
+                               "operation_sum=31957.58, currency=руб.)]"
