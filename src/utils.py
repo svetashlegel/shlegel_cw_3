@@ -28,7 +28,6 @@ def load_operations(path):
         return answer
 
 
-
 def get_last_five_operations(data):
     """Получает последние 5 операций из списка"""
     last_operations_list = []
