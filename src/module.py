@@ -29,9 +29,11 @@ class Operations:
                f"card={self.card})"
 
     def hide_card_num(self):
+        """Скрывает номер карты"""
         hidden_card_num = self.card[:4] + " " + self.card[4:6] + "** **** " + self.card[-4:]
         return hidden_card_num
 
     def hide_account_num(self):
+        """Скрывает номер счета"""
         hidden_account_num = "**" + self.account_num[-4:]
         return hidden_account_num
