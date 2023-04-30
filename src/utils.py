@@ -18,12 +18,15 @@ def load_operations(path):
                                               op["from"].split()[-1])
                 operations_list.append(operation)
             except KeyError:
-                operations_list.append(None)
+                pass
         return operations_list
-    except FileNotFoundError:
-        print("Файл не найден")
     except JSONDecodeError:
-        print("Ошибка чтения файла")
+        answer = "Ошибка чтения файла"
+        return answer
+    except FileNotFoundError:
+        answer = "Файл не найден"
+        return answer
+
 
 
 def get_last_five_operations(data):

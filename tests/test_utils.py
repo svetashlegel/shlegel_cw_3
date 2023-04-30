@@ -9,6 +9,12 @@ def test_load_operations(seven_operations):
     assert str(operations) == seven_operations
 
 
+def test_load_operations__file_not_found():
+    testing_path = ''
+    content = utils.load_operations(testing_path)
+    assert content == "Файл не найден"
+
+
 def test_get_last_five_operations(example_operations_list, five_operations):
     last_operations = utils.get_last_five_operations(example_operations_list)
     assert str(last_operations) == five_operations
