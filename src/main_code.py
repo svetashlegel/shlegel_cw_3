@@ -1,12 +1,12 @@
-from utils import load_operations, get_last_5_operations, get_right_format
+from utils import load_operations, get_last_five_operations, get_operation_data
 
-# Загружаем данные из файла
-operations_data = load_operations('operations.json')
+OPERATIONS_LIST_PATH = 'operations.json'
+
+# Загружаем данные из файла, формируем список экземпляров класса Operation
+operations_list = load_operations(OPERATIONS_LIST_PATH)
 # Собираем последние 5 операций в список
-last_five_operations = get_last_5_operations(operations_data)
-# Преобразуем каждый элемент списка в экземпляр класса Operations с занемением необходимой информации
-final_list = get_right_format(last_five_operations)
-# Преобразуем данные по операциям в нужный формат и выводим на экран
-for operation in final_list:
-    print(operation.right_format_data())
+last_five_operations = get_last_five_operations(operations_list)
+# Формируем вывод данных по каждой операции
+for operation in last_five_operations:
+    print(get_operation_data(operation))
     print()

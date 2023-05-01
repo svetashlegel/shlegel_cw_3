@@ -2,34 +2,38 @@ import datetime
 
 
 class Operations:
-    def __init__(self, date, description, operation_from, operation_to, operation_sum, currency):
-        self.date = date
+    def __init__(self, id, state, date, description, operation_from, operation_to,
+                 amount, currency, account_num, card):
+        self.id = id
+        self.state = state
+        self.date = datetime.datetime.strptime(date, '%Y-%m-%dT%H:%M:%S.%f')
         self.description = description
         self.operation_from = operation_from
         self.operation_to = operation_to
-        self.operation_sum = operation_sum
+        self.amount = amount
         self.currency = currency
+        self.account_num = account_num
+        self.card = card
 
     def __repr__(self):
         return f"{self.__class__.__name__} (" \
+               f"id={self.id}, " \
+               f"state={self.state}, " \
                f"date={self.date}, " \
                f"description={self.description}, " \
                f"operation_from={self.operation_from}, " \
                f"operation_to={self.operation_to}, " \
-               f"operation_sum={self.operation_sum}, " \
-               f"currency={self.currency})"
+               f"amount={self.amount}, " \
+               f"currency={self.currency}" \
+               f"account_num={self.account_num}" \
+               f"card={self.card})"
 
-    def right_format_data(self):
-        """Возвращает форматированные данные"""
-        thedate = self.date
-        date_formated = datetime.datetime.strptime(thedate, '%Y-%m-%dT%H:%M:%S.%f')
+    def hide_card_num(self):
+        """Скрывает номер карты"""
+        hidden_card_num = self.card[:4] + " " + self.card[4:6] + "** **** " + self.card[-4:]
+        return hidden_card_num
 
-        card_num = self.operation_from.split()[-1]
-        formated_from = card_num[:4] + " " + card_num[4:6] + "** **** " + card_num[-4:]
-
-        account_num = self.operation_to.split()[-1]
-        formated_to = "**" + account_num[-4:]
-
-        return f"{date_formated.day}.{date_formated.month}.{date_formated.year} {self.description}\n" \
-               f"{formated_from} -> {formated_to}\n" \
-               f"{self.operation_sum} {self.currency}"
+    def hide_account_num(self):
+        """Скрывает номер счета"""
+        hidden_account_num = "**" + self.account_num[-4:]
+        return hidden_account_num
